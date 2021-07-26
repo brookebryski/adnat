@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
 
     def welcome
-
+      if current_user.organisation_id == nil
+        @organisation = Organisation.new
+    else
+        redirect_to overview_path
+    end
     end
 
     def destroy

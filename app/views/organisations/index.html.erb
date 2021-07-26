@@ -1,9 +1,6 @@
+<h2> <%= @organisation.name %> </h2>
 
-<h1>Organisations</h1>
 
-<ul>
-<% @organisations.each do |o| %>
-<li><%= o.name%></li>
-<% end %>
-</ul>
+<%= link_to "Edit", edit_organisation_path(:id => @organisation.id) %>
+
 
