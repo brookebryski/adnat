@@ -44,6 +44,10 @@ class OrganisationsController < ApplicationController
         Organisation.destroy(params[:id])
         redirect_to welcome_path
     end
+
+
+    private 
+
     def organisation_params
         params.require(:organisation).permit(:name, :rate)
     end

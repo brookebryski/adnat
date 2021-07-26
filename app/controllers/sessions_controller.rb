@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
       if current_user.organisation_id == nil
         @organisation = Organisation.new
     else
-        redirect_to overview_path
+        redirect_to organisations_path
     end
     end
 
