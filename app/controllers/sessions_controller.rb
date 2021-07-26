@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
     def welcome
+
     end
 
     def destroy
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
     end
 
     def create
-        @user = User.find_by(name: params[:user][:name])
+        @user = User.find_by(email: params[:email])
         if @user && @user.authenticate(params[:user][:password])
           session[:user_id] = @user.id
           redirect_to user_path(@user)
@@ -22,22 +23,12 @@ class SessionsController < ApplicationController
         end
       end
 
-    #def fbcreate
-      #  @user = User.find_or_create_by(uid: auth['uid']) do |u|
-      #    u.username = auth['info']['name']
-       #   u.email = auth['info']['email']
-      #    u.password = auth['uid']   # Secure Random Hex
-      #  end
-
-     #   session[:user_id] = @user.id
-
-     #   redirect_to '/organisations'
- # end
-
-
-    private 
-
-    #def auth
-      #  request.env['omniauth.auth']
-   # end
+      def organisations
+        if current_user.organisation_id != nil
+            @organisation = Organisation.find(current_user.organisation_id)
+        else
+            redirect_to welcome_path
+        end
+    end
+ 
 end

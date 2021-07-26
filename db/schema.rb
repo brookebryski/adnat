@@ -13,7 +13,6 @@
 ActiveRecord::Schema.define(version: 2021_07_26_160014) do
 
   create_table "organisations", force: :cascade do |t|
-    t.string "oid"
     t.string "name"
     t.integer "rate"
     t.datetime "created_at", precision: 6, null: false
@@ -21,27 +20,21 @@ ActiveRecord::Schema.define(version: 2021_07_26_160014) do
   end
 
   create_table "shifts", force: :cascade do |t|
-    t.string "sid"
     t.datetime "start"
     t.datetime "finish"
     t.integer "break"
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_shifts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "uid"
     t.string "name"
     t.string "email"
     t.string "password_digest"
-    t.integer "organisation_id", null: false
+    t.integer "organisation_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["organisation_id"], name: "index_users_on_organisation_id"
   end
 
-  add_foreign_key "shifts", "users"
-  add_foreign_key "users", "organisations"
 end
