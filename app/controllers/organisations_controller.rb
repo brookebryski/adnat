@@ -1,11 +1,19 @@
 class OrganisationsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
+    def index
+        @organisations = Organisation.all
+    end
+
+    def new
+     @organisation = Organisation.new
+    end
+
     def create
         @organisation = Organisation.create(organisation_params)
         if @organisation.save
             User.update(current_user.id, organisation_id: @organisation.id)
-            redirect_to organisations_path
+            redirect_to "organisations/index"
         else
             render "sessions/welcome"
         end
@@ -21,7 +29,7 @@ class OrganisationsController < ApplicationController
             render "edit"
         else
             if current_user.organisation_id != nil
-                redirect_to organisations_path
+                redirect_to "organisations/index"
             else
                 redirect_to welcome_path
             end

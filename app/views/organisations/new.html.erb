@@ -1,0 +1,11 @@
+<h1>Create Organisation</h1>
+
+<%= form_for(@organisation) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :"Hourly rate: $" %>
+    <%= f.text_field :rate %>
+    
+    <%= f.submit "Create and Join" %>
+    <% end %>
