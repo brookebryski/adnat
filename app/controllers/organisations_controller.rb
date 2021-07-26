@@ -13,7 +13,7 @@ class OrganisationsController < ApplicationController
         @organisation = Organisation.create(organisation_params)
         if @organisation.save
             User.update(current_user.id, organisation_id: @organisation.id)
-            redirect_to "organisations/index"
+            redirect_to organisations_path
         else
             render "sessions/welcome"
         end
@@ -29,7 +29,7 @@ class OrganisationsController < ApplicationController
             render "edit"
         else
             if current_user.organisation_id != nil
-                redirect_to "organisations/index"
+                redirect_to organisations_path
             else
                 redirect_to welcome_path
             end
