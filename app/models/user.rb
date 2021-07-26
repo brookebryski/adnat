@@ -1,2 +1,11 @@
 class User < ApplicationRecord
+   belongs_to :organisation
+   has_many :shifts
+   
+
+    validates :name, presence: true
+    validates :email, presence: true
+
+    has_secure_password
+
 end
