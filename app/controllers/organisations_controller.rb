@@ -2,11 +2,7 @@ class OrganisationsController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def index
-        if current_user.organisation_id != nil
-            @organisation = Organisation.find(current_user.organisation_id)
-        else
-            render "sessions/welcome"
-        end
+       @organisations = Organisation.all
     end
 
     def new
