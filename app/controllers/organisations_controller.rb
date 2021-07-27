@@ -19,7 +19,7 @@ class OrganisationsController < ApplicationController
             User.update(current_user.id, organisation_id: @organisation.id)
             redirect_to organisations_path
         else
-            render "sessions/welcome"
+            redirect_to '/edit'
         end
     end
 
@@ -35,14 +35,14 @@ class OrganisationsController < ApplicationController
             if current_user.organisation_id != nil
                 redirect_to organisations_path
             else
-                redirect_to welcome_path
+                redirect_to '/edit'
             end
         end
     end
 
     def destroy
         Organisation.destroy(params[:id])
-        redirect_to welcome_path
+        redirect_to organisations_path
     end
 
 
