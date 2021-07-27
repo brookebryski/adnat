@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def welcome
-
   end
 
   def destroy
@@ -11,7 +10,9 @@ class SessionsController < ApplicationController
   
   def new
   end
-
+  
+def home
+end
   
   def create
     @user = User.find_by(email: params[:user][:email])
