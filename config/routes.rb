@@ -7,8 +7,11 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get '/signup' => 'users#create'
   delete '/logout' => 'sessions#destroy'
+ 
 
+  resources :shifts
   resources :users
   resources :organisations
-  resources :shifts
-end
+  end
+
+  end

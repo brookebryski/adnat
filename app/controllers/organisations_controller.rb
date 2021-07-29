@@ -36,6 +36,20 @@ class OrganisationsController < ApplicationController
         end
     end
 
+    #def join
+   #     @organisation = Organisation.find params[:id]
+   #     current_user.update_attribute(:organisation_id, @organisation.id)
+  #      redirect_to organisations_path
+ #   end
+
+ #def join
+   #     organisation = Organisation.find(params[:id])
+   #      if organisation
+   #          User.update(current_user.id, organisation_id: organisation.id)
+   #          redirect_to organisations_path
+  #       end
+  #   end
+ 
     def destroy
         Organisation.destroy(params[:id])
         redirect_to organisations_path

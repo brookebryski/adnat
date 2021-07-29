@@ -1,5 +1,6 @@
 class ShiftsController < ApplicationController
 
+
     private
 
     def shift_params

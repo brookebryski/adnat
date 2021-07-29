@@ -20,18 +20,18 @@ class UsersController < ApplicationController
     redirect_to '/welcome' if @user.organisation_id == nil
     end
 
-    def join
-        organisation = Organisation.find(params[:id])
-        if organisation
-            User.update(current_user.id, organisation_id: organisation.id)
-            redirect_to organisations_path
-        end
-    end
+   # def join
+   #     organisation = Organisation.find(params[:id])
+   #     if organisation
+   #         User.update(current_user.id, organisation_id: organisation.id)
+   #         redirect_to organisations_path
+   #     end
+   # end
 
-    def leave
-        User.update(current_user.id, organisation_id: nil)
-        redirect_to organisations_path
-    end
+  #  def leave
+   #     User.update(current_user.id, organisation_id: nil)
+  #      redirect_to organisations_path
+  #  end
 
     private
 
